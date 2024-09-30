@@ -24,3 +24,7 @@ func NewService(repo *repository.Repository) *Service {
 func (s *Service) GetPosts() ([]model.Post, error) {
 	return s.repo.GetPosts()
 }
+
+func (s *Service) GetPostBySlug(slug string) (*model.Post, error) {
+	return s.repo.GetPostBySlug(slug)
+}

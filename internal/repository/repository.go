@@ -29,3 +29,12 @@ func (r *Repository) GetPosts() ([]model.Post, error) {
 	result := r.db.Find(&posts)
 	return posts, result.Error
 }
+
+func (r *Repository) GetPostBySlug(slug string) (*model.Post, error) {
+	var post model.Post
+	result := r.db.Where("slug = ?", slug).First(&post)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	return &post, nil
+}
